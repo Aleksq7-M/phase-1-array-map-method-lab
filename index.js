@@ -11,6 +11,26 @@ const tutorials = [
   'what is JSONP?'
 ];
 
+
 const titleCased = () => {
-  return tutorials
+  const casedTutorials = tutorials.map(function(title){
+    let casedTitle = '';
+    let wasSpace = true; //starts true to capitalize first letter
+    for ( let letter of title){
+      if (letter === ' '){//checks if it's a space first
+        wasSpace = true;
+        casedTitle += letter;
+      } else if (letter !== letter.toUpperCase() && wasSpace === true){
+        //check for lowercase letters following spaces
+        wasSpace = false;
+        casedTitle += letter.toUpperCase();
+      } else {
+        //everything else is unchanged
+        wasSpace = false;
+        casedTitle += letter;
+      }
+      }
+    return casedTitle;
+  })
+  return casedTutorials;
 }
